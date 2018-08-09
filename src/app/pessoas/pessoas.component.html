@@ -1,5 +1,5 @@
 <ul class="heroes">
-  <li *ngFor="let pessoa of pessoas">
+  <li *ngFor="let pessoa of dataFiltrado">
       <span class="badge">{{pessoa.id}}</span> {{pessoa.nome}}
 
   </li>
@@ -17,20 +17,21 @@
     <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>
 
+  <input type="text"
+  (keyup)="onKeyUp($event.target.value)">
+  <mat-table  [dataSource]="dataSource" class="mat-elevation-z8">
 
-  <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-
-    <ng-container matColumnDef="id">
-      <th mat-header-cell *matHeaderCellDef> Id. </th>
-      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    <ng-container matColumnDef="id" >
+      <mat-header-cell *matHeaderCellDef> Id. </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="nome">
-      <th mat-header-cell *matHeaderCellDef> Name </th>
-      <td mat-cell *matCellDef="let element"> {{element.nome}} </td>
+      <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.nome}} </mat-cell>
     </ng-container>
 
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
 
   </mat-table>

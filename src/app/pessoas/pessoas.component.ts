@@ -11,19 +11,27 @@ import { Pessoa } from '../pessoa';
   styleUrls: ['./pessoas.component.css']
 })
 export class PessoasComponent implements OnInit {
-  displayedColumns: string[] = ['id', 'nome'];
+  public displayedColumns: string[] = ['id', 'nome'];
 
-  dataSource: Pessoa[];
+  public dataSource: Pessoa[];
+  public dataFiltrado: Pessoa[];
 
   constructor(private pessoaService: PessoaService) { }
 
   ngOnInit() {
     this.getPessoas();
   }
-  public getPessoas(): void {
-    this.pessoaService.getPessoas()
-    .subscribe(pessoas => this.dataSource = pessoas);
 
+  public getPessoas(): void {
+    this.pessoaService.getPessoas().subscribe(res => {
+      this.dataSource = res;
+      this.dataFiltrado = res;
+    });
+  }
+
+  public onKeyUp(evento: KeyboardEvent ) {
+    console.log(evento);
+    //this.dataFiltrado = this.dataSource.filter();
   }
 
 }
