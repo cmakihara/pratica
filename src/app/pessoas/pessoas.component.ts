@@ -3,14 +3,17 @@ import { Component, OnInit } from '@angular/core';
 import { Pessoa } from '../pessoa';
 
 
+
+
 @Component({
   selector: 'app-pessoas',
   templateUrl: './pessoas.component.html',
   styleUrls: ['./pessoas.component.css']
 })
 export class PessoasComponent implements OnInit {
+  displayedColumns: string[] = ['id', 'nome'];
 
-  pessoas: Pessoa[];
+  dataSource: Pessoa[];
 
   constructor(private pessoaService: PessoaService) { }
 
@@ -19,7 +22,8 @@ export class PessoasComponent implements OnInit {
   }
   public getPessoas(): void {
     this.pessoaService.getPessoas()
-    .subscribe(pessoas => this.pessoas = pessoas);
+    .subscribe(pessoas => this.dataSource = pessoas);
+
   }
 
 }

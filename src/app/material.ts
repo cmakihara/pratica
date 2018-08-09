@@ -16,7 +16,8 @@ import {
     MatDatepickerModule,
     MatFormFieldModule,
     MatNativeDateModule,
-    MatInputModule
+    MatInputModule,
+    MatTableModule
   ],
 
   exports: [
@@ -25,7 +26,8 @@ import {
     MatDatepickerModule,
     MatFormFieldModule,
     MatNativeDateModule,
-    MatInputModule
+    MatInputModule,
+    MatTableModule
   ],
 
 })
