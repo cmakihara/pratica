@@ -1,7 +1,13 @@
-.mat-table{
+.mat-row{
     /* background-color: rgb(92, 145, 175);
     color: white;
     padding: 10px; */
 }
+.highlight{
+  background-color: aqua;
+  font-weight: bold;
+}
+
+
 
 
