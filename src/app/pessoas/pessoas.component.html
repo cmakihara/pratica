@@ -1,0 +1,18 @@
+<ul class="heroes">
+  <li *ngFor="let pessoa of pessoas">
+      <span class="badge">{{pessoa.id}}</span> {{pessoa.nome}}
+
+  </li>
+</ul>
+<button mat-raised-button>Basic</button>
+  <button mat-raised-button color="primary">Primary</button>
+  <button mat-raised-button color="accent">Accent</button>
+  <button mat-raised-button color="warn">Warn</button>
+  <button mat-raised-button disabled>Disabled</button>
+
+
+  <mat-form-field>
+    <input matInput [matDatepicker]="picker" placeholder="Choose a date">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
