@@ -1,41 +1,38 @@
 <ul class="heroes">
   <li *ngFor="let pessoa of dataFiltrado">
       <span class="badge">{{pessoa.id}}</span> {{pessoa.nome}}
-
   </li>
 </ul>
+
 <button mat-raised-button>Basic</button>
-  <button mat-raised-button color="primary">Primary</button>
-  <button mat-raised-button color="accent">Accent</button>
-  <button mat-raised-button color="warn">Warn</button>
-  <button mat-raised-button disabled>Disabled</button>
+<button mat-raised-button color="primary">Primary</button>
+<button mat-raised-button color="accent">Accent</button>
+<button mat-raised-button color="warn">Warn</button>
+<button mat-raised-button disabled>Disabled</button>
 
+<mat-form-field>
+  <input matInput [matDatepicker]="picker" placeholder="Choose a date">
+  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker #picker></mat-datepicker>
+</mat-form-field>
 
-  <mat-form-field>
-    <input matInput [matDatepicker]="picker" placeholder="Choose a date">
-    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-datepicker #picker></mat-datepicker>
-  </mat-form-field>
-  <span *ngIf="afterSelect">{{pessoaSelecionada.id}}{{pessoaSelecionada.nome}}</span>
+<span *ngIf="afterSelect">{{pessoaSelecionada.id}}{{pessoaSelecionada.nome}}</span>
 
+<input type="text" (keyup)="onKeyUp($event.target.value)">
 
-  <input type="text"
-  (keyup)="onKeyUp($event.target.value)">
-  <mat-table  [dataSource]="dataSource" class="mat-elevation-z8">
+<mat-table  [dataSource]="dataFiltrado" class="mat-elevation-z8">
 
-    <ng-container matColumnDef="id" >
-      <mat-header-cell *matHeaderCellDef> Id. </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
-    </ng-container>
+  <ng-container matColumnDef="id" >
+    <mat-header-cell *matHeaderCellDef> Id. </mat-header-cell>
+    <mat-cell *matCellDef="let element" class="teste"> {{element.id}} </mat-cell>
+  </ng-container>
 
-    <ng-container matColumnDef="nome">
-      <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
-      <mat-cell *matCellDef="let element" (click)="selecionado(element)" > {{element.nome}} </mat-cell>
-    </ng-container>
+  <ng-container matColumnDef="nome">
+    <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+    <mat-cell *matCellDef="let element" (click)="selecionado(element)" class="teste"> {{element.nome}} </mat-cell>
+  </ng-container>
 
-    <mat-header-row *matHeaderRowDef="displayedColumns" ></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns;" (mouseover)="onOutMouse()"
-    (mouseout)="onOutMouse()"
-    [class.highlight]="isMouseOver"></mat-row>
-  </mat-table>
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; let index; columns: displayedColumns;" class="teste" [class.active]="idx === index" (mousenter)="idx = index"></mat-row>
+</mat-table>
 

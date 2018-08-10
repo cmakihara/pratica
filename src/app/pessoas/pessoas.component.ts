@@ -18,6 +18,7 @@ export class PessoasComponent implements OnInit {
   public pessoaSelecionada: Pessoa;
   public afterSelect = false;
   public isMouseOver = false;
+  public idx = -1;
 
   constructor(private pessoaService: PessoaService) { }
 
@@ -34,15 +35,19 @@ export class PessoasComponent implements OnInit {
 
   public onKeyUp(evento: KeyboardEvent ) {
     console.log(evento);
-    //this.dataFiltrado = this.dataSource.filter();
+    this.dataFiltrado = this.dataSource.filter((r) => r.nome.toLowerCase() === evento.toLowerCase());
+    console.log(this.dataFiltrado);
   }
   public selecionado(userSelecionado: Pessoa): void {
     this.pessoaSelecionada = userSelecionado;
     this.afterSelect = true;
-    console.log('clic');
+    console.log('click');
   }
   public onOutMouse(): void {
     this.isMouseOver = !this.isMouseOver;
+  }
+  public on(evento) {
+    console.log(evento);
   }
 
 }
